@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  div.addStats
+    h1.newStats= title
+    form(action='/add' method='post')
+      div
+        label(for='player1') Player 1: 
+        select(id='player1' name='player1')
+          option(selected disabled value=none) Choose Player
+          for name in names
+            option(value=name) 
+              =name
+      div
+        label(for='player2') Player 2: 
+        select(id='player2' name='player2')
+          option(selected disabled value=none) Choose Player
+          for name in names
+            option(value=name) 
+              =name
+      div#winner
+        label(for='winner') WINNER: 
+        input(type='radio' id='one-won' name='winner')
+        label#name1(for='one-won') 
+          i Choose Player 1
+        input(type='radio' id='two-won' name='winner')
+        label#name2(for='two-won')
+          i Choose Player 2
+      div
+        label(for='points') Played to How Many Points? 
+        input(type='number' id='points' name='points' min= 0 max=21)
+      div
+        label(for='score') SCORE:
+        input(type='number' id='player1-score' name='player1_score' min= 0)
+        label#score1(for='player1-score') 
+          i Choose Player 1 &nbsp;
+        input(type='number' id='player2-score' name='player2_score' min= 0)
+        label#score2(for='player2-score') 
+          i Choose Player 2 &nbsp;
+  script(src='../../javascripts/client.js' type='text/javascript')          
