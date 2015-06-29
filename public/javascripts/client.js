@@ -3,16 +3,20 @@ var player1 = document.getElementById('player1');
 var player2 = document.getElementById('player2');
 var winnerDiv = document.getElementById('winner');
 
+var firstName = function (fullName) {
+  return fullName.substring(0, (fullName.indexOf(' ') + 2)) + '.';
+};
+
 player1.addEventListener('change', function () {
 var player1Name = document.getElementById('player1').value;
-document.getElementById('name1').innerHTML = player1Name + ' &nbsp';
-document.getElementById('score1').innerHTML = player1Name + ' &nbsp';
+document.getElementById('name1').innerHTML = firstName(player1Name) + ' &nbsp';
+document.getElementById('score1').innerHTML = firstName(player1Name) + ' &nbsp';
 });
 
 player2.addEventListener('change', function () {
 var player2Name = document.getElementById('player2').value;
-document.getElementById('name2').innerHTML = player2Name + ' &nbsp';
-document.getElementById('score2').innerHTML = player2Name + ' &nbsp';
+document.getElementById('name2').innerHTML = firstName(player2Name) + ' &nbsp';
+document.getElementById('score2').innerHTML = firstName(player2Name) + ' &nbsp';
 });
 
 
