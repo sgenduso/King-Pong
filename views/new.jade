@@ -12,53 +12,54 @@ block content
           span *
           |Player 1: 
         select(id='player1' name='player1')
-          option(selected disabled value='choose') Choose Player
+          option(selected=player1=='choose' disabled value='choose') Choose Player
           for name in names
-            option(value=name) 
+            option(value=name selected=player1==name) 
               =name
       div
         label(for='player2') 
           span *
           |Player 2: 
         select(id='player2' name='player2')
-          option(selected disabled value='choose') Choose Player
+          option(selected=player2=='choose' disabled value='choose') Choose Player
           for name in names
-            option(value=name) 
+            option(value=name selected=player2==name) 
               =name
       div
         label(for='points') 
           span *
           |Played to How Many Points? 
-        input(type='number' id='points' name='points' min= 0 max=21)
+        input(type='number' id='points' name='points' min= 0 max=21 value=points ? points : '')
       div#winner
         label(for='winner') 
           span *
           |WINNER: 
-        input(type='radio' id='one-won' name='winner' value='one-won')
+        input(type='radio' id='one-won' name='winner' value='one-won' checked=winner=='one-won')
         label#name1(for='one-won') 
           i Choose Player 1 &nbsp;
-        input(type='radio' id='two-won' name='winner' value='two-won')
+        input(type='radio' id='two-won' name='winner' value='two-won' checked=winner=='two-won')
         label#name2(for='two-won')
           i Choose Player 2 &nbsp;
       div
         label(for='score') SCORE:
-        input(type='number' id='player1-score' name='p1_score' min= 0)
+        input(type='number' id='player1-score' name='p1_score' min= 0 value = p1Score ? p1Score : '')
         label#score1(for='player1-score') 
           i Choose Player 1 &nbsp;
-        input(type='number' id='player2-score' name='p2_score' min= 0)
+        input(type='number' id='player2-score' name='p2_score' min= 0 value = p2Score ? p2Score : '')
         label#score2(for='player2-score') 
           i Choose Player 2 &nbsp;
       div
         label(for='date') 
           span *
           |Date:
-        input(type='date' id='date' name='date' min='2015-05-18')
+        input(type='date' id='date' name='date' min='2015-05-18' value= date ? date : '')
       div
         label(for='time') Time:
-        input(type='time' id='time' name='time')
+        input(type='time' id='time' name='time' value= time ? time : '')
       div
         label(for='comments') Comments?
         textarea(id='comments' name='comments')
+          =comments ? comments : ''
       div
         input#submit(type='submit' value='RECORD STATS')
   script(src='../../javascripts/client.js' type='text/javascript')          

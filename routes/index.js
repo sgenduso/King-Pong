@@ -40,13 +40,29 @@ router.post('/add', function (req, res, next) {
     var p1Score = req.body.p1_score;
     var p2Score = req.body.p2_score;
     var date = req.body.date;
+    var time = req.body.time;
+    var comments = req.body.comments;
     var errors = validate.form(player1, player2, points, winner, p1Score, p2Score, date);
     if (errors) {
       var names = players.map(function (record) {
         return record.name;
       });
       var today = new Date();
-      res.render('new', {title: 'Add Game Stats', names: names, errors:errors});
+      res.render('new',
+        {
+          title: 'Add Game Stats',
+          names: names,
+          errors:errors,
+          player1: player1,
+          player2: player2,
+          points: points,
+          winner: winner,
+          p1Score: p1Score,
+          p2Score: p2Score,
+          date: date,
+          time: time,
+          comments: comments
+        });
     } else {
       res.redirect('/');
     }
