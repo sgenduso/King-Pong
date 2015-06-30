@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1.home= title
+  p.home Welcome to #{title}
   a(href='/add') Add Game Stats!
   //- form(action='/players' method='post')
   //-   input(type='submit' value='Populate Players')

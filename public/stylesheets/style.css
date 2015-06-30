@@ -10,6 +10,10 @@ a {
   color: #00B7FF;
 }
 
+.home {
+  color: #3DA35D;
+}
+
 .addStats {
   margin: 0 auto;
   border: solid white 10px;
@@ -23,6 +27,12 @@ h1.newStats {
   border-bottom: solid white 3px;
 }
 
+.error {
+  font-style: italic;
+  font-size: .85em;
+  color: yellow;
+}
+
 #required {
   font-size: .75em;
   color: yellow;
@@ -32,7 +42,7 @@ span {
   color: yellow;
 }
 
-input[type= 'number']:focus, input[type= 'date']:focus, select:focus, textarea:focus {
+input[type= 'number']:focus, input[type= 'date']:focus, input[type= 'time']:focus, select:focus, textarea:focus {
   box-shadow: 0 0 5px yellow;
   outline: none;
   border: 2px solid yellow;
@@ -66,6 +76,7 @@ input[type='number'] {
 input[type='radio'] {
   width: 35px;
   margin-left: 10px;
+  color: yellow;
 }
 
 input, select {
@@ -86,7 +97,7 @@ input, select {
 
 #submit:hover {
   /*background-color: yellow;*/
-  box-shadow: 0 0 5px 3px yellow;
+  box-shadow: 0 0 5px 3px black;
 }
 
 textarea {
