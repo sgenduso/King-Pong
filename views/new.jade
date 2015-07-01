@@ -34,10 +34,10 @@ block content
         label(for='winner') 
           span *
           |WINNER: 
-        input(type='radio' id='one-won' name='winner' value='one-won' checked=winner=='one-won')
-        label#name1(for='one-won') 
-        input(type='radio' id='two-won' name='winner' value='two-won' checked=winner=='two-won')
-        label#name2(for='two-won')
+        input.css-checkbox(type='radio' id='one-won' name='winner' value='one-won' checked=winner=='one-won')
+        label.css-label#name1(for='one-won') 
+        input.css-checkbox(type='radio' id='two-won' name='winner' value='two-won' checked=winner=='two-won')
+        label.css-label#name2(for='two-won')
       div
         label(for='score') SCORE:
         input(type='number' id='player1-score' name='p1_score' min= 0 value = p1Score ? p1Score : '')

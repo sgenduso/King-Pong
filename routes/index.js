@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('monk')(process.env.PONG_DB);
+var db = require('monk')(process.env.MONGOLAB_URI || process.env.PONG_DB);
 var gameCollection = db.get('games');
 var playerCollection = db.get('players');
 var playerInfo = require('../lib/javascripts/players.js');
@@ -81,9 +81,13 @@ router.post('/add', function (req, res, next) {
           time: time,
           comments: comments
           });
-      res.redirect('/');
+      res.redirect('/leaderboard');
     }
   });
+});
+
+router.get('/leaderboard', function (req, res, next) {
+  res.render('leaders', {title: 'LEADERBOARD'});
 });
 
 

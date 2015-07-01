@@ -3,6 +3,9 @@ extends layout
 block content
   h1.home= title
   p.home Welcome to #{title}
-  a(href='/add') Add Game Stats!
+  div.home
+    a(href='/add') Add Game Stats!
+    &nbsp;|&nbsp;
+    a(href='/leaderboard') View Leaderboard
   //- form(action='/players' method='post')
   //-   input(type='submit' value='Populate Players')
