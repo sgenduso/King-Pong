@@ -33,8 +33,8 @@ router.get('/add', function (req, res, next) {
 router.post('/add', function (req, res, next) {
   playerCollection.find({},function (err, players) {
     console.log(req.body);
-    var player1 = req.body.player1 || '';
-    var player2 = req.body.player2 || '';
+    var player1 = req.body.player1;
+    var player2 = req.body.player2;
     var points = req.body.points;
     var winner = req.body.winner || '';
     var p1Score = req.body.p1_score;

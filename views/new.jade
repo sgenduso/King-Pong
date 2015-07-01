@@ -12,7 +12,7 @@ block content
           span *
           |Player 1: 
         select(id='player1' name='player1')
-          option(selected=player1=='choose' disabled value='choose') Choose Player
+          option(selected=player1==undefined disabled value='choose') Choose Player
           for name in names
             option(value=name selected=player1==name) 
               =name
@@ -21,7 +21,7 @@ block content
           span *
           |Player 2: 
         select(id='player2' name='player2')
-          option(selected=player2=='choose' disabled value='choose') Choose Player
+          option(selected=player1==undefined disabled value='choose') Choose Player
           for name in names
             option(value=name selected=player2==name) 
               =name
@@ -36,18 +36,14 @@ block content
           |WINNER: 
         input(type='radio' id='one-won' name='winner' value='one-won' checked=winner=='one-won')
         label#name1(for='one-won') 
-          i Choose Player 1 &nbsp;
         input(type='radio' id='two-won' name='winner' value='two-won' checked=winner=='two-won')
         label#name2(for='two-won')
-          i Choose Player 2 &nbsp;
       div
         label(for='score') SCORE:
         input(type='number' id='player1-score' name='p1_score' min= 0 value = p1Score ? p1Score : '')
         label#score1(for='player1-score') 
-          i Choose Player 1 &nbsp;
         input(type='number' id='player2-score' name='p2_score' min= 0 value = p2Score ? p2Score : '')
         label#score2(for='player2-score') 
-          i Choose Player 2 &nbsp;
       div
         label(for='date') 
           span *
