@@ -6,6 +6,7 @@ var playerCollection = db.get('players');
 var playerInfo = require('../lib/javascripts/players.js');
 var players = playerInfo.playerNames;
 var validate = require('../lib/javascripts/validate.js');
+var leaders = require('../lib/javascripts/leaders.js');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'KING PONG' });
@@ -87,7 +88,22 @@ router.post('/add', function (req, res, next) {
 });
 
 router.get('/leaderboard', function (req, res, next) {
-  res.render('leaders', {title: 'LEADERBOARD'});
+  gameCollection.find({}, function (err, games) {
+    var gamesWon = leaders.gamesWon(games);
+  res.render('leaders', {
+    title: 'LEADERBOARD',
+    gameName1: gamesWon[0][0],
+    gameCount1: gamesWon[0][1],
+    gameName2: gamesWon[1][0],
+    gameCount2: gamesWon[1][1],
+    gameName3: gamesWon[2][0],
+    gameCount3: gamesWon[2][1],
+    gameName4: gamesWon[3][0],
+    gameCount4: gamesWon[3][1],
+    gameName5: gamesWon[4][0],
+    gameCount5: gamesWon[4][1],
+    });
+  });
 });
 
 
