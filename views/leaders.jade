@@ -9,118 +9,47 @@ block content
         tr
           th(colspan='2') GAMES WON
       tbody
-        tr
-          td=gameName1
-          td=gameCount1
-        tr
-          td=gameName2
-          td=gameCount2
-        tr
-          td=gameName3
-          td=gameCount3
-        tr
-          td=gameName4
-          td=gameCount4
-        tr
-          td=gameName5
-          td=gameCount5
+        for player, index in gamesWon
+          if index < 5
+            tr
+              td=player[0]
+              td=player[1]
     table.stats
       thead
         tr
           th(colspan='2') WIN RATE
       tbody
-        tr
-          td=wrName1
-          td=wr1
-        tr
-          td=wrName2
-          td=wr2
-        tr
-          td=wrName3
-          td=wr3
-        tr
-          td=wrName4
-          td=wr4
-        tr
-          td=wrName4
-          td=wr4
+        for player, index in winRates
+          if index < 5
+            tr
+              td=player[0]
+              td=player[1] + '%'
+      
     table.stats
       thead
         tr
           th(colspan='2') GAMES PLAYED
       tbody
-        tr
-          td=playedName1
-          td=playCount1
-        tr
-          td=playedName2
-          td=playCount2
-        tr
-          td=playedName3
-          td=playCount3
-        tr
-          td=playedName4
-          td=playCount4
-        tr
-          td=playedName5
-          td=playCount5
+        for player, index in gamesPlayed
+          if index < 5
+            tr
+              td=player[0]
+              td=player[1]
     table.stats
       thead
         tr
           th(colspan='2') WINNING PT MARGIN
       tbody
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
+        
     table.stats
       thead
         tr
           th(colspan='2') CONSECUTIVE WINS
       tbody
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
+        
     table.stats
       thead
         tr
           th(colspan='2') OPPONENTS BEATEN
       tbody
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
-        tr
-          td
-          td
+        

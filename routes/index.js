@@ -91,29 +91,13 @@ router.get('/leaderboard', function (req, res, next) {
   gameCollection.find({}, function (err, games) {
     var gamesWon = leaders.gamesWon(games);
     var gamesPlayed = leaders.gamesPlayed(games);
+    var winRates = leaders.winRates(gamesPlayed, gamesWon);
 
   res.render('leaders', {
     title: 'LEADERBOARD',
-    gameName1: gamesWon[0][0],
-    gameCount1: gamesWon[0][1],
-    gameName2: gamesWon[1][0],
-    gameCount2: gamesWon[1][1],
-    gameName3: gamesWon[2][0],
-    gameCount3: gamesWon[2][1],
-    gameName4: gamesWon[3][0],
-    gameCount4: gamesWon[3][1],
-    gameName5: gamesWon[4][0],
-    gameCount5: gamesWon[4][1],
-    playedName1: gamesPlayed[0][0],
-    playCount1: gamesPlayed[0][1],
-    playedName2: gamesPlayed[1][0],
-    playCount2: gamesPlayed[1][1],
-    playedName3: gamesPlayed[2][0],
-    playCount3: gamesPlayed[2][1],
-    playedName4: gamesPlayed[3][0],
-    playCount4: gamesPlayed[3][1],
-    playedName5: gamesPlayed[4][0],
-    playCount5: gamesPlayed[4][1],
+    gamesWon: gamesWon,
+    gamesPlayed: gamesPlayed,
+    winRates: winRates
     });
   });
 });
