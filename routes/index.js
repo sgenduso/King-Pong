@@ -93,13 +93,15 @@ router.get('/leaderboard', function (req, res, next) {
     var gamesPlayed = leaders.gamesPlayed(games);
     var winRates = leaders.winRates(gamesPlayed, gamesWon);
     var ptDiff = leaders.ptDiff(games);
+    var consecWins = leaders.consecWins(games);
 
   res.render('leaders', {
     title: 'LEADERBOARD',
     gamesWon: gamesWon,
     gamesPlayed: gamesPlayed,
     winRates: winRates,
-    ptDiff: ptDiff
+    ptDiff: ptDiff,
+    consecWins: consecWins
     });
   });
 });

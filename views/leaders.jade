@@ -50,7 +50,11 @@ block content
         tr
           th(colspan='2') CONSECUTIVE WINS
       tbody
-        
+        for player, index in consecWins
+          if index < 5
+            tr
+              td=player[0]
+              td=player[1]
     table.stats
       thead
         tr
