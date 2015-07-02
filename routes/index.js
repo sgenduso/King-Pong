@@ -94,6 +94,7 @@ router.get('/leaderboard', function (req, res, next) {
     var winRates = leaders.winRates(gamesPlayed, gamesWon);
     var ptDiff = leaders.ptDiff(games);
     var consecWins = leaders.consecWins(games);
+    var oppsBeaten = leaders.oppsBeaten(games);
 
   res.render('leaders', {
     title: 'LEADERBOARD',
@@ -101,7 +102,8 @@ router.get('/leaderboard', function (req, res, next) {
     gamesPlayed: gamesPlayed,
     winRates: winRates,
     ptDiff: ptDiff,
-    consecWins: consecWins
+    consecWins: consecWins,
+    oppsBeaten: oppsBeaten
     });
   });
 });

@@ -30,6 +30,14 @@ a {
   text-align: center;
 }
 
+.stats:hover {
+  box-shadow: 0 0 5px 3px yellow;
+}
+
+tr:hover {
+  background-color: black;
+}
+
 th {
   padding: 10px;
   color: white;

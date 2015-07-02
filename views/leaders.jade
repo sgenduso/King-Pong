@@ -60,4 +60,9 @@ block content
         tr
           th(colspan='2') OPPONENTS BEATEN
       tbody
-        
+        for player, index in oppsBeaten
+          if index < 5
+            tr
+              td=player[0]
+              td=player[1]
+          
