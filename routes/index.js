@@ -121,16 +121,16 @@ router.post('/add', function (req, res, next) {
       var gamesWon = individuals.gamesWon(games, name);
       var gamesPlayed = games.length;
       var winRate = (gamesWon / gamesPlayed *100).toFixed(0);
-        if (winRate === undefined) {
+        if (winRate === undefined || winRate === 'NaN') {
           winRate = 0;
         }
       var ptDiff = individuals.ptDiff(games, name);
-        if (ptDiff === undefined) {
+        if (ptDiff.length === 0) {
           ptDiff = 'N/A';
         } else {
           ptDiff = ptDiff[0];
         }
-      var consecWins = individuals.consecWins(games);
+      var consecWins = individuals.consecWins(games, name);
         if (consecWins.length === 0) {
           consecWins = 0;
         } else {

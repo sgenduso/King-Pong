@@ -4,9 +4,11 @@ block content
   div.add-stats
     h1.new-stats= title
       span.white-link
-        a(href='/') | Return Home |
-        &nbsp;&nbsp;
-        a(href='/leaderboard') | View Leaderboard |
+        a(href='/') |Return Home|
+        &nbsp;
+        a(href='/leaderboard') |View Leaderboard|
+        &nbsp;
+        a(href='/players') |Player Stats|
     for error in errors
       p.error= error
     form(action='/add' method='post')

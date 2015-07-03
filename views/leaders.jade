@@ -2,7 +2,11 @@ extends layout
 
 block content
   h1.leader= title
+  a(href='/') Return Home
+  &nbsp;|&nbsp;
   a(href='/add') Add Game Stats!
+  &nbsp;|&nbsp;
+  a(href='/players') Player Stats
   div.leaderboard 
     table.stats
       thead
@@ -48,7 +52,7 @@ block content
     table.stats
       thead
         tr
-          th(colspan='2') CONSECUTIVE WINS
+          th(colspan='2') LONGEST WIN STREAKS
       tbody
         for player, index in consecWins
           if index < 5

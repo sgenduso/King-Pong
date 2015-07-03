@@ -5,15 +5,38 @@ block content
   p
     a(href='/') Return Home
     &nbsp;|&nbsp;
+    a(href='/add') Add Game Stats!
+    &nbsp;|&nbsp;
     a(href='/leaderboard') View Leaderboard
-  div
-    form.individual(action='/individual', method='post')
-      div
-        label.player-select(for='player-select') Select player to see their game stats
-      div
-        select(id='player-select' name='player_select')
-          option(selected disabled value='choose') Choose Player
-          for player in players
-            option(value= player.name)
-              =player.name
+  div.stat-forms
+    div.individual
+      form(action='/individual', method='post')
+        div
+          label.player-select(for='player-select') Select a player to see their game stats
+        div
+          select(id='player-select' name='player_select')
+            option(selected disabled value='choose') Choose Player
+            for player in players
+              option(value= player.name)
+                =player.name
+    div.compare
+      form(action='/compare', method='post')
+        div
+          p Select 2 players to see how they match up
+        div
+          label.compare-select(for='player1-select') Player 1&nbsp;
+          select(id='player1-select' name='player1_select')
+            option(selected disabled value='choose') Choose Player
+            for player in players
+              option(value= player.name)
+                =player.name
+        div
+          label.compare-select(for='player2-select') Player 2&nbsp;
+          select(id='player2-select' name='player2_select')
+            option(selected disabled value='choose') Choose Player
+            for player in players
+              option(value= player.name)
+                =player.name
+        div
+          input(type='submit' value='Compare!')
   script(src='../../javascripts/client.js' type='text/javascript')          

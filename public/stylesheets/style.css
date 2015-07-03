@@ -43,7 +43,7 @@ span.white-link > a {
   text-align: center;
 }
 
-.stats:hover {
+.stats:hover, .individual:hover, .compare:hover {
   box-shadow: 0 0 5px 3px yellow;
 }
 
@@ -57,8 +57,13 @@ span.white-link > a {
 }
 
 tr:hover {
-  background-color: black;
+  background-color: yellow;
 }
+
+tr:hover td:last-child{
+  color: black;
+}
+
 
 .stats th {
   padding: 10px;
@@ -101,14 +106,30 @@ h1.new-stats {
   color: yellow;
 }
 
-.individual{
-  color: white;
+.stat-forms {
+  margin: 0 auto;
   display: inline-block;
+}
+
+.individual, .compare {
+  color: white;
+  /*display: inline-block;*/
+  width: 400px;
   border: solid white 1px;
 }
 
+.individual {
+  margin-bottom: 20px;
+  margin-top: 5px;
+  /*vertical-align: top;*/
+}
+
 .player-select {
-  width: 200px;
+  display: inline;
+}
+
+.compare-select {
+  width: 80px;
 }
 
 #required {
