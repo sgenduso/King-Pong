@@ -3,3 +3,24 @@ extends layout
 block content
   h1.single-stats=title
   a(href='players') Back to Players
+  div.individual-stats
+    table.my-stats
+      tr
+        td GAMES WON
+        td=gamesWon
+      tr
+        td GAMES PLAYED
+        td=gamesPlayed
+      tr
+        td WIN RATE
+        td=winRate + '%'
+      tr
+        td HIGHEST WINNING POINT DIFFERENCE
+        td=ptDiff
+      tr
+        td MOST CONSECUTIVE WINS
+        td=consecWins
+      tr
+        td UNIQUE OPPONENTS BEATEN
+        td=oppsBeaten
+        

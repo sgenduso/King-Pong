@@ -7,6 +7,7 @@ var playerInfo = require('../lib/javascripts/players.js');
 var players = playerInfo.playerNames;
 var validate = require('../lib/javascripts/validate.js');
 var leaders = require('../lib/javascripts/leaders.js');
+var individuals = require('../lib/javascripts/individuals.js');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'KING PONG' });
@@ -81,44 +82,73 @@ router.post('/add', function (req, res, next) {
           date: date,
           time: time,
           comments: comments
-          });
-      res.redirect('/leaderboard');
-    }
-  });
-});
-
-router.get('/leaderboard', function (req, res, next) {
-  gameCollection.find({}, function (err, games) {
-    var gamesWon = leaders.gamesWon(games);
-    var gamesPlayed = leaders.gamesPlayed(games);
-    var winRates = leaders.winRates(gamesPlayed, gamesWon);
-    var ptDiff = leaders.ptDiff(games);
-    var consecWins = leaders.consecWins(games);
-    var oppsBeaten = leaders.oppsBeaten(games);
-
-  res.render('leaders', {
-    title: 'LEADERBOARD',
-    gamesWon: gamesWon,
-    gamesPlayed: gamesPlayed,
-    winRates: winRates,
-    ptDiff: ptDiff,
-    consecWins: consecWins,
-    oppsBeaten: oppsBeaten
+        });
+        res.redirect('/leaderboard');
+      }
     });
   });
-});
 
-router.get('/players', function (req, res, next) {
-  playerCollection.find({},function (err, players) {
-  res.render('players', {title: 'Pong Players', players: players});
-});
-});
+  router.get('/leaderboard', function (req, res, next) {
+    gameCollection.find({}, function (err, games) {
+      var gamesWon = leaders.gamesWon(games);
+      var gamesPlayed = leaders.gamesPlayed(games);
+      var winRates = leaders.winRates(gamesPlayed, gamesWon);
+      var ptDiff = leaders.ptDiff(games);
+      var consecWins = leaders.consecWins(games);
+      var oppsBeaten = leaders.oppsBeaten(games);
 
-router.post('/individual', function (req, res, next) {
-  var name = req.body.player_select;
-  gameCollection.find({$or: [{player1: name}, {player2: name}]}, function (err, games) {
-  res.render('individual', {title: name, games:games});
+      res.render('leaders', {
+        title: 'LEADERBOARD',
+        gamesWon: gamesWon,
+        gamesPlayed: gamesPlayed,
+        winRates: winRates,
+        ptDiff: ptDiff,
+        consecWins: consecWins,
+        oppsBeaten: oppsBeaten
+      });
+    });
   });
-});
 
-module.exports = router;
+  router.get('/players', function (req, res, next) {
+    playerCollection.find({},function (err, players) {
+      res.render('players', {title: 'Pong Players', players: players});
+    });
+  });
+
+  router.post('/individual', function (req, res, next) {
+    var name = req.body.player_select;
+    gameCollection.find({$or: [{player1: name}, {player2: name}]}, function (err, games) {
+      var gamesWon = individuals.gamesWon(games, name);
+      var gamesPlayed = games.length;
+      var winRate = (gamesWon / gamesPlayed *100).toFixed(0);
+        if (winRate === undefined) {
+          winRate = 0;
+        }
+      var ptDiff = individuals.ptDiff(games, name);
+        if (ptDiff === undefined) {
+          ptDiff = 'N/A';
+        } else {
+          ptDiff = ptDiff[0];
+        }
+      var consecWins = individuals.consecWins(games);
+        if (consecWins.length === 0) {
+          consecWins = 0;
+        } else {
+          consecWins = consecWins[0];
+        }
+      var oppsBeaten = individuals.oppsBeaten(games, name);
+
+      res.render('individual', {
+        title: name,
+        games:games,
+        gamesWon: gamesWon,
+        gamesPlayed: gamesPlayed,
+        winRate: winRate,
+        ptDiff: ptDiff,
+        consecWins: consecWins,
+        oppsBeaten: oppsBeaten
+        });
+    });
+  });
+
+  module.exports = router;
