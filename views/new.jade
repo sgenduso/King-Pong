@@ -1,8 +1,12 @@
 extends layout
 
 block content
-  div.addStats
-    h1.newStats= title
+  div.add-stats
+    h1.new-stats= title
+      span.white-link
+        a(href='/') | Return Home |
+        &nbsp;&nbsp;
+        a(href='/leaderboard') | View Leaderboard |
     for error in errors
       p.error= error
     form(action='/add' method='post')

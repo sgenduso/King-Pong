@@ -108,5 +108,17 @@ router.get('/leaderboard', function (req, res, next) {
   });
 });
 
+router.get('/players', function (req, res, next) {
+  playerCollection.find({},function (err, players) {
+  res.render('players', {title: 'Pong Players', players: players});
+});
+});
+
+router.post('/individual', function (req, res, next) {
+  var name = req.body.player_select;
+  gameCollection.find({$or: [{player1: name}, {player2: name}]}, function (err, games) {
+  res.render('individual', {title: name, games:games});
+  });
+});
 
 module.exports = router;

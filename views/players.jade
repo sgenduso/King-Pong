@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1.players=title
+  p
+    a(href='/') Return Home
+    &nbsp;|&nbsp;
+    a(href='/leaderboard') View Leaderboard
+  div
+    form.individual(action='/individual', method='post')
+      div
+        label.player-select(for='player-select') Select player to see their game stats
+      div
+        select(id='player-select' name='player_select')
+          option(selected disabled value='choose') Choose Player
+          for player in players
+            option(value= player.name)
+              =player.name
+  script(src='../../javascripts/client.js' type='text/javascript')          

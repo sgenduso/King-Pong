@@ -1,3 +1,5 @@
+if (document.getElementById('required')) {
+
 //ADD CHECKBOXES TO SELECT WINNER BASED ON PLAYER 1 AND PLAYER 2 SELECTED
 var player1 = document.getElementById('player1');
 var player2 = document.getElementById('player2');
@@ -41,5 +43,13 @@ player1.addEventListener('change', execute1);
 
 player2.addEventListener('change', execute2);
 
+} else {
 
 //----------------------------------------------------------
+
+//selecting from individual player dropdown triggers form post
+var individual = document.getElementById('player-select');
+individual.addEventListener('change',function () {
+  this.form.submit();
+});
+}
