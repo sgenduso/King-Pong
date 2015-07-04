@@ -159,11 +159,49 @@ router.post('/add', function (req, res, next) {
       return fullName.substring(0, fullName.indexOf(' '));
     };
     gameCollection.find({ $or: [ {$and: [
-        {player1: name1}, {player2:name2}] },
+      {player1: name1}, {player2:name2}] },
       { $and: [ {player1: name2}, {player2: name1} ] }
-      ]}, function (err, games) {
-        var gamesWon = compare.gamesWon(games, name1, name2);
-        var gamesPlayed = games.length;
+    ]}, function (err, games) {
+      var gamesWon = compare.gamesWon(games, name1, name2);
+      var gamesPlayed = games.length;
+      var ptDiff = compare.ptDiff(games, name1, name2);
+      var consecWins = compare.consecWins(games, name1, name2);
+      var wr1;
+      if ((gamesWon[name1] / gamesPlayed * 100).toFixed(0) === 'NaN') {
+        wr1 = 0;
+      } else {
+        wr1 = (gamesWon[name1] / gamesPlayed * 100).toFixed(0);
+      }
+      var wr2;
+      if ((gamesWon[name2] / gamesPlayed * 100).toFixed(0) === 'NaN') {
+        wr2 = 0;
+      } else {
+        wr2 = (gamesWon[name2] / gamesPlayed * 100).toFixed(0);
+      }
+      var pd1;
+      if (ptDiff[name1].length === 0) {
+        pd1= 'N/A';
+      } else {
+        pd1 = ptDiff[name1][0];
+      }
+      var pd2;
+      if (ptDiff[name2].length === 0) {
+        pd2= 'N/A';
+      } else {
+        pd2 = ptDiff[name2][0];
+      }
+      var ws1;
+      if (consecWins[name1].length === 0) {
+        ws1 = 0;
+      } else {
+        ws1 = consecWins[name1][0];
+      }
+      var ws2;
+      if (consecWins[name2].length === 0) {
+        ws2 = 0;
+      } else {
+        ws2 = consecWins[name2][0];
+      }
 
       res.render('compare', {
         title: name1 + ' vs. ' + name2,
@@ -172,6 +210,12 @@ router.post('/add', function (req, res, next) {
         gamesPlayed: gamesPlayed,
         gw1: gamesWon[name1],
         gw2: gamesWon[name2],
+        wr1: wr1,
+        wr2: wr2,
+        pd1: pd1,
+        pd2: pd2,
+        ws1: ws1,
+        ws2: ws2,
       });
     });
   });
