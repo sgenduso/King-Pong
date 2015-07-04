@@ -22,7 +22,13 @@ span.white-link > a {
   text-decoration: none;
 }
 
-.home, .leader, .players, .single-stats {
+h1.new-stats {
+  border-bottom: solid white 3px;
+  position: relative;
+  color: black;
+}
+
+h1, .home {
   color: #3DA35D;
 }
 
@@ -56,16 +62,21 @@ span.white-link > a {
   text-align: center;
 }
 
+.my-stats td:nth-child(2), .my-stats th {
+  color: white;
+}
+
+
 tr:hover {
   background-color: yellow;
 }
 
-tr:hover td:last-child{
+tr:hover td:last-child, tr:hover td:nth-child(2){
   color: black;
 }
 
 
-.stats th {
+.stats th, .my-stats th {
   padding: 10px;
   color: white;
   background-color: rgba(0, 0, 0, .5);
@@ -95,10 +106,6 @@ td:last-child {
   box-shadow: 2px 2px 10px 2px yellow;
 }
 
-h1.new-stats {
-  border-bottom: solid white 3px;
-  position: relative;
-}
 
 .error {
   font-style: italic;

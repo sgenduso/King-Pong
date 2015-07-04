@@ -8,6 +8,7 @@ var players = playerInfo.playerNames;
 var validate = require('../lib/javascripts/validate.js');
 var leaders = require('../lib/javascripts/leaders.js');
 var individuals = require('../lib/javascripts/individuals.js');
+var compare = require('../lib/javascripts/compare.js');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'KING PONG' });
@@ -121,21 +122,21 @@ router.post('/add', function (req, res, next) {
       var gamesWon = individuals.gamesWon(games, name);
       var gamesPlayed = games.length;
       var winRate = (gamesWon / gamesPlayed *100).toFixed(0);
-        if (winRate === undefined || winRate === 'NaN') {
-          winRate = 0;
-        }
+      if (winRate === undefined || winRate === 'NaN') {
+        winRate = 0;
+      }
       var ptDiff = individuals.ptDiff(games, name);
-        if (ptDiff.length === 0) {
-          ptDiff = 'N/A';
-        } else {
-          ptDiff = ptDiff[0];
-        }
+      if (ptDiff.length === 0) {
+        ptDiff = 'N/A';
+      } else {
+        ptDiff = ptDiff[0];
+      }
       var consecWins = individuals.consecWins(games, name);
-        if (consecWins.length === 0) {
-          consecWins = 0;
-        } else {
-          consecWins = consecWins[0];
-        }
+      if (consecWins.length === 0) {
+        consecWins = 0;
+      } else {
+        consecWins = consecWins[0];
+      }
       var oppsBeaten = individuals.oppsBeaten(games, name);
 
       res.render('individual', {
@@ -147,7 +148,31 @@ router.post('/add', function (req, res, next) {
         ptDiff: ptDiff,
         consecWins: consecWins,
         oppsBeaten: oppsBeaten
-        });
+      });
+    });
+  });
+
+  router.post('/compare', function (req, res, next) {
+    var name1 = req.body.player1_select;
+    var name2 = req.body.player2_select;
+    var firstOnly = function (fullName) {
+      return fullName.substring(0, fullName.indexOf(' '));
+    };
+    gameCollection.find({ $or: [ {$and: [
+        {player1: name1}, {player2:name2}] },
+      { $and: [ {player1: name2}, {player2: name1} ] }
+      ]}, function (err, games) {
+        var gamesWon = compare.gamesWon(games, name1, name2);
+        var gamesPlayed = games.length;
+
+      res.render('compare', {
+        title: name1 + ' vs. ' + name2,
+        name1: firstOnly(name1),
+        name2: firstOnly(name2),
+        gamesPlayed: gamesPlayed,
+        gw1: gamesWon[name1],
+        gw2: gamesWon[name2],
+      });
     });
   });
 

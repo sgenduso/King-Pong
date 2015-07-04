@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  h1.compare-stats=title
+  a(href='players') Back to Players
+  div.compare-stats
+    table.my-stats
+      thead
+        tr
+          th Games Played:&nbsp;
+            =gamesPlayed
+          th=name1
+          th=name2
+      tbody
+        tr
+          td GAMES WON
+          td=gw1
+          td=gw2
+        tr
+          td WIN RATE
+          td
+          td
+        tr
+          td HIGHEST WINNING POINT DIFFERENCE
+          td
+          td
+        tr
+          td LONGEST WIN STREAK
+          td
+          td
+      //- tr
+      //-   td GAMES WON
+      //-   td=gamesWon
+      //- tr
+      //-   td GAMES PLAYED
+      //-   td=gamesPlayed
+      //- tr
+      //-   td WIN RATE
+      //-   td=winRate + '%'
+      //- tr
+      //-   td HIGHEST WINNING POINT DIFFERENCE
+      //-   td=ptDiff
+      //- tr
+      //-   td LONGEST WIN STREAK
+      //-   td=consecWins
+      //- tr
+      //-   td UNIQUE OPPONENTS BEATEN
+      //-   td=oppsBeaten
+      //-   
