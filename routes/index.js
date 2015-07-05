@@ -24,7 +24,7 @@ router.post('/players', function (req, res, next) {
 });
 
 router.get('/add', function (req, res, next) {
-  playerCollection.find({},function (err, players) {
+  playerCollection.find({$query: {}, $orderby: { name : 1 } },function (err, players) {
     var names = players.map(function (record) {
       return record.name;
     });
@@ -111,7 +111,7 @@ router.post('/add', function (req, res, next) {
   });
 
   router.get('/players', function (req, res, next) {
-    playerCollection.find({},function (err, players) {
+    playerCollection.find({$query: {}, $orderby: { name : 1 } },function (err, players) {
       res.render('players', {title: 'Pong Players', players: players});
     });
   });

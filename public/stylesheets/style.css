@@ -124,7 +124,6 @@ td:last-child {
 
 .individual, .compare {
   color: white;
-  /*display: inline-block;*/
   width: 400px;
   border: solid white 1px;
 }
@@ -132,7 +131,6 @@ td:last-child {
 .individual {
   margin-bottom: 20px;
   margin-top: 5px;
-  /*vertical-align: top;*/
 }
 
 .player-select {

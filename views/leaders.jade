@@ -14,7 +14,7 @@ block content
           th(colspan='2') GAMES WON
       tbody
         for player, index in gamesWon
-          if index < 10
+          if index < 5
             tr
               td=player[0]
               td=player[1]
@@ -24,7 +24,7 @@ block content
           th(colspan='2') WIN RATE
       tbody
         for player, index in winRates
-          if index < 10
+          if index < 5
             tr
               td=player[0]
               td=player[1] + '%'
@@ -35,7 +35,7 @@ block content
           th(colspan='2') GAMES PLAYED
       tbody
         for player, index in gamesPlayed
-          if index < 10
+          if index < 5
             tr
               td=player[0]
               td=player[1]
@@ -45,7 +45,7 @@ block content
           th(colspan='2') WINNING PT DIFF
       tbody
         for player, index in ptDiff
-          if index < 10
+          if index < 5
             tr
               td=player[0]
               td=player[1]
@@ -55,7 +55,7 @@ block content
           th(colspan='2') LONGEST WIN STREAKS
       tbody
         for player, index in consecWins
-          if index < 10
+          if index < 5
             tr
               td=player[0]
               td=player[1]
@@ -65,7 +65,7 @@ block content
           th(colspan='2') OPPONENTS BEATEN
       tbody
         for player, index in oppsBeaten
-          if index < 10
+          if index < 5
             tr
               td=player[0]
               td=player[1]
