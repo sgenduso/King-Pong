@@ -21,6 +21,8 @@ block content
                 =player.name
     div.compare
       form(action='/compare', method='post')
+        if error
+          p Come on now, we're not that lonely here, no one has to be their own opponent...
         div
           p Select 2 players to see how they match up
         div
@@ -38,5 +40,5 @@ block content
               option(value= player.name)
                 =player.name
         div
-          input(type='submit' value='Compare!')
+          input#compare(type='submit' value='Compare!')
   script(src='../../javascripts/client.js' type='text/javascript')          

@@ -33,7 +33,7 @@ h1, .home {
 }
 
 .leaderboard {
-  margin-top: 20px;;
+  margin-top: 40px;;
   border: solid white 10px;
   padding: 20px;
   background-color: rgba(61, 163, 93, .4);
@@ -45,7 +45,7 @@ h1, .home {
   background-color: rgba(35, 94, 54, .7);
   display: inline-block;
   width: 15.5%;
-  height: 400px;
+  vertical-align: top;
   text-align: center;
 }
 
@@ -53,19 +53,23 @@ h1, .home {
   box-shadow: 0 0 5px 3px yellow;
 }
 
-.my-stats {
+.my-stats, .our-stats {
   margin-top: 20px;
   border: solid white 1px;
   background-color: rgba(35, 94, 54, .7);
-  display: inline-block;
-  width: 50%;
   text-align: center;
+  display: inline-block;
 }
 
-.my-stats td:nth-child(2), .my-stats th {
+.our-stats td:nth-child(2), .our-stats th {
   color: white;
 }
 
+.our-stats th {
+  padding: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, .5);
+}
 
 tr:hover {
   background-color: yellow;
@@ -76,7 +80,7 @@ tr:hover td:last-child, tr:hover td:nth-child(2){
 }
 
 
-.stats th, .my-stats th {
+.stats th {
   padding: 10px;
   color: white;
   background-color: rgba(0, 0, 0, .5);
@@ -102,7 +106,7 @@ td:last-child {
   border: solid white 10px;
   padding: 20px;
   width: 50%;
-  background-color: rgba(61, 163, 93, .9);
+  background-color: rgba(61, 163, 93, .75);
   box-shadow: 2px 2px 10px 2px yellow;
 }
 
@@ -137,6 +141,24 @@ td:last-child {
 
 .compare-select {
   width: 80px;
+}
+
+.compare-stats {
+  display: inline-block;
+}
+
+.comments {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 23px;
+  width: 500px;
+  vertical-align: top;
+  border: solid black 5px;
+  padding: 10px;
+  background: rgba(255, 255, 255, .8);
+  /*background: rgba(255, 255, 0, .7);*/
+  box-shadow: 0 0 0 3px rgba(35, 94, 54, 1);
+  font-size: .8em;
 }
 
 #required {
@@ -182,6 +204,7 @@ input[type='number'] {
 select {
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
+  padding: 3px;
 }
 
 input[type=radio].css-checkbox {
@@ -238,6 +261,17 @@ input, select {
 
 #submit:hover {
   box-shadow: 0 0 5px 3px black;
+}
+
+#compare {
+  margin-left: 85px;
+  font-weight: bold;
+  font-size: .9em;
+  border: solid 2px black;
+}
+
+#compare:hover {
+  box-shadow: 0 0 4px 2px yellow;
 }
 
 textarea {

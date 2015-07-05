@@ -14,14 +14,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'KING PONG' });
 });
 
-// router.post('/players', function (req, res, next) {
-//   for (var i = 1; i < players.length; i++) {
-//     var playerDoc = {id: players[i][0], name: players[i][1]};
-//     playerCollection.insert(playerDoc, function (err, player) {
-//     });
-//   }
-//   res.redirect('/');
-// });
+router.post('/players', function (req, res, next) {
+  for (var i = 1; i < players.length; i++) {
+    var playerDoc = {id: players[i][0], name: players[i][1]};
+    playerCollection.insert(playerDoc, function (err, player) {
+    });
+  }
+  res.redirect('/');
+});
 
 router.get('/add', function (req, res, next) {
   playerCollection.find({},function (err, players) {
@@ -155,6 +155,11 @@ router.post('/add', function (req, res, next) {
   router.post('/compare', function (req, res, next) {
     var name1 = req.body.player1_select;
     var name2 = req.body.player2_select;
+    if (name1 === name2) {
+      playerCollection.find({},function (err, players) {
+        res.render('players', {title: 'Pong Players', players: players, error: 'error'});
+      });
+    }
     var firstOnly = function (fullName) {
       return fullName.substring(0, fullName.indexOf(' '));
     };
@@ -202,6 +207,7 @@ router.post('/add', function (req, res, next) {
       } else {
         ws2 = consecWins[name2][0];
       }
+      var comments = compare.comments(games);
 
       res.render('compare', {
         title: name1 + ' vs. ' + name2,
@@ -216,6 +222,7 @@ router.post('/add', function (req, res, next) {
         pd2: pd2,
         ws1: ws1,
         ws2: ws2,
+        comments: comments
       });
     });
   });

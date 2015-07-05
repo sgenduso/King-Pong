@@ -2,9 +2,10 @@ extends layout
 
 block content
   h1.compare-stats=title
-  a(href='players') Back to Players
+  div
+    a(href='players') Back to Players
   div.compare-stats
-    table.my-stats
+    table.our-stats
       thead
         tr
           th Games Played:&nbsp;
@@ -28,22 +29,11 @@ block content
           td LONGEST WIN STREAK
           td=ws1
           td=ws2
-      //- tr
-      //-   td GAMES WON
-      //-   td=gamesWon
-      //- tr
-      //-   td GAMES PLAYED
-      //-   td=gamesPlayed
-      //- tr
-      //-   td WIN RATE
-      //-   td=winRate + '%'
-      //- tr
-      //-   td HIGHEST WINNING POINT DIFFERENCE
-      //-   td=ptDiff
-      //- tr
-      //-   td LONGEST WIN STREAK
-      //-   td=consecWins
-      //- tr
-      //-   td UNIQUE OPPONENTS BEATEN
-      //-   td=oppsBeaten
-      //-   
+    div.comments
+      p --------- Game Commentary ---------
+      for comment in comments
+        p Date:&nbsp;
+            =comment[0]
+        p Comments:&nbsp;
+            =comment[2]
+        p --------------------------------------------
