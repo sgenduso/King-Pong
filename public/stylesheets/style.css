@@ -9,6 +9,10 @@ a {
   color: #00B7FF;
 }
 
+a:hover {
+  color: white;
+}
+
 span.white-link {
   position: absolute;
   font-size: .6em;
@@ -20,6 +24,10 @@ span.white-link > a {
   color: white;
   font-size: .6em;
   text-decoration: none;
+}
+
+span.white-link > a:hover {
+  color: yellow;
 }
 
 h1.new-stats {
@@ -59,6 +67,7 @@ h1, .home {
   background-color: rgba(35, 94, 54, .7);
   text-align: center;
   display: inline-block;
+  width: 45%;
 }
 
 .our-stats td:nth-child(2), .our-stats th {
@@ -141,30 +150,21 @@ td:last-child {
   width: 80px;
 }
 
-.compare-stats {
-  display: inline-block;
-}
-
 .comments {
   display: inline-block;
   margin-left: 20px;
-  margin-top: 23px;
-  width: 500px;
+  margin-top: 22px;
+  width: 50%;
   vertical-align: top;
   border: solid black 5px;
   padding: 10px;
   background: rgba(255, 255, 255, .8);
-  /*background: rgba(255, 255, 0, .7);*/
   box-shadow: 0 0 0 3px rgba(35, 94, 54, 1);
   font-size: .8em;
 }
 
 #required {
   font-size: .75em;
-  color: yellow;
-}
-
-span {
   color: yellow;
 }
 
@@ -183,10 +183,14 @@ form > div{
   margin-bottom: 20px;
 }
 
-label {
+label, .label {
   display: inline-block;
   vertical-align: middle;
   width: 150px;
+}
+
+.required {
+  color: yellow;
 }
 
 #name1, #name2, #score1, #score2 {
@@ -201,6 +205,8 @@ input[type='number'] {
 
 select {
   -webkit-appearance: none;
+  -moz-appearance: none;
+          appearance: none;
   -webkit-border-radius: 0px;
   padding: 3px;
 }

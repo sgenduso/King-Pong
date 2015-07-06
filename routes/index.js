@@ -34,7 +34,7 @@ router.get('/add', function (req, res, next) {
 });
 
 router.post('/add', function (req, res, next) {
-  playerCollection.find({},function (err, players) {
+  playerCollection.find({$query: {}, $orderby: { name : 1 } },function (err, players) {
     console.log(req.body);
     var player1 = req.body.player1;
     var player2 = req.body.player2;
@@ -155,18 +155,32 @@ router.post('/add', function (req, res, next) {
   router.post('/compare', function (req, res, next) {
     var name1 = req.body.player1_select;
     var name2 = req.body.player2_select;
-    if (name1 === name2) {
-      playerCollection.find({},function (err, players) {
-        res.render('players', {title: 'Pong Players', players: players, error: 'error'});
-      });
+    var error = '';
+    if (name1 === undefined || name2 === undefined) {
+      error = 'Please choose 2 different players before comparing them.';
     }
-    var firstOnly = function (fullName) {
-      return fullName.substring(0, fullName.indexOf(' '));
-    };
+    else if (name1 === name2) {
+      error = 'Come on now, we\'re not that lonely here, no one has to be their own opponent...';
+    }
+
+    if (error !== '') {
+    {playerCollection.find({$query: {}, $orderby: { name : 1 } },function (err, players) {
+      res.render('players', {title: 'Pong Players', players: players, error: error});
+    });
+    }
+  }
+
+    else {
+
     gameCollection.find({ $or: [ {$and: [
       {player1: name1}, {player2:name2}] },
       { $and: [ {player1: name2}, {player2: name1} ] }
     ]}, function (err, games) {
+      var name1 = req.body.player1_select;
+      var name2 = req.body.player2_select;
+      var firstOnly = function (fullName) {
+        return fullName.substring(0, fullName.indexOf(' '));
+      };
       var gamesWon = compare.gamesWon(games, name1, name2);
       var gamesPlayed = games.length;
       var ptDiff = compare.ptDiff(games, name1, name2);
@@ -225,6 +239,7 @@ router.post('/add', function (req, res, next) {
         comments: comments
       });
     });
+  }
   });
 
   module.exports = router;
