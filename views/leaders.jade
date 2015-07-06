@@ -39,7 +39,7 @@ block content
             tr
               td=player[0]
               td=player[1]
-    table.stats
+    table.stats.pt-diff
       thead
         tr
           th(colspan='2') WINNING PT DIFF
@@ -47,7 +47,7 @@ block content
         for player, index in ptDiff
           if index < 5
             tr
-              td.pt-diff=player[0]
+              td=player[0]
               td=player[1]
     table.stats
       thead

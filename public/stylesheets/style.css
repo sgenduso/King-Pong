@@ -57,13 +57,14 @@ h1, .home {
   text-align: center;
 }
 
+.stats.pt-diff td:first-child {
+  font-size: .8em;
+}
+
 .stats td:first-child {
   font-size: .9em;
 }
 
-.pt-diff {
-  font-size: .8em;
-}
 
 .stats:hover, .individual:hover, .compare:hover {
   box-shadow: 0 0 5px 3px yellow;
