@@ -32,8 +32,9 @@ block content
     div.comments
       p --------- Game Commentary ---------
       for comment in comments
-        p Date:&nbsp;
-            =comment[0]
-        p Comments:&nbsp;
-            =comment[2]
-        p --------------------------------------------
+        if comment[2] != ''
+          p Date:&nbsp;
+              =comment[0]
+          p Comments:&nbsp;
+              =comment[2]
+          p --------------------------------------------

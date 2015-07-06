@@ -57,6 +57,10 @@ h1, .home {
   text-align: center;
 }
 
+.stats td:first-child {
+  font-size: .9em;
+}
+
 .stats:hover, .individual:hover, .compare:hover {
   box-shadow: 0 0 5px 3px yellow;
 }
@@ -69,6 +73,7 @@ h1, .home {
   display: inline-block;
   width: 45%;
 }
+
 
 .our-stats td:nth-child(2), .our-stats th {
   color: white;
@@ -114,7 +119,7 @@ td:last-child {
   margin: 0 auto;
   border: solid white 10px;
   padding: 20px;
-  width: 50%;
+  width: 55%;
   background-color: rgba(61, 163, 93, .75);
   box-shadow: 2px 2px 10px 2px yellow;
 }
