@@ -1,0 +1,14 @@
+_Production link:_ http://king-pong-g10.herokuapp.com/
+
+_Description:_ a statistical tracker for ping-pong-playing galvanize students.
+
+_Includes:_
+- a leaderboard of the top 5 players in 6 categories
+  - games won
+  - win rate
+  - games played
+  - highest point margin in a game
+  - longest win streak
+  - most unique opponents beaten
+- ability to view stats on a player-by-player basis
+- ability to compare historical stats between 2 players
