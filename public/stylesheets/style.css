@@ -61,6 +61,10 @@ h1, .home {
   font-size: .9em;
 }
 
+.pt-diff {
+  font-size: .8em;
+}
+
 .stats:hover, .individual:hover, .compare:hover {
   box-shadow: 0 0 5px 3px yellow;
 }
