@@ -1,6 +1,6 @@
 _Production link:_ http://king-pong-g10.herokuapp.com/
 
-_Live Demo:_ http://youtu.be/YlArFeXeM9U
+_Live Demo:_ http://youtu.be/ydHhDIVR_l4
 
 _Description:_ a statistical tracker for ping-pong-playing galvanize students, built as a full-stack week-6 project.
 
