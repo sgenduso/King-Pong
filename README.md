@@ -1,6 +1,8 @@
 _Production link:_ http://king-pong-g10.herokuapp.com/
 
-_Description:_ a statistical tracker for ping-pong-playing galvanize students.
+_Live Demo:_ http://youtu.be/YlArFeXeM9U
+
+_Description:_ a statistical tracker for ping-pong-playing galvanize students, built as a full-stack week-6 project.
 
 _Includes:_
 - a leaderboard of the top 5 players in 6 categories
@@ -12,3 +14,11 @@ _Includes:_
   - most unique opponents beaten
 - ability to view stats on a player-by-player basis
 - ability to compare historical stats between 2 players
+
+_Technology Used:_
+- Express
+- Node
+- Javascript
+- Jade
+- MongoDB
+- Monk
