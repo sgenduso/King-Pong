@@ -198,16 +198,22 @@ router.post('/add', function (req, res, next) {
         wr2 = (gamesWon[name2] / gamesPlayed * 100).toFixed(0);
       }
       var pd1;
+      var avgpd1;
       if (ptDiff[name1].length === 0) {
         pd1= 'N/A';
+        avgpd1= 'N/A';
       } else {
         pd1 = ptDiff[name1][0];
+        avgpd1 = pd1 / gamesWon[name1];
       }
       var pd2;
+      var avgpd2;
       if (ptDiff[name2].length === 0) {
         pd2= 'N/A';
+        avgpd2= 'N/A';
       } else {
         pd2 = ptDiff[name2][0];
+        avgpd2 = pd2 / gamesWon[name2];
       }
       var ws1;
       if (consecWins[name1].length === 0) {
@@ -234,6 +240,8 @@ router.post('/add', function (req, res, next) {
         wr2: wr2,
         pd1: pd1,
         pd2: pd2,
+        avgpd1: avgpd1,
+        avgpd2: avgpd2,
         ws1: ws1,
         ws2: ws2,
         comments: comments
