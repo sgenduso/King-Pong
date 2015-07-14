@@ -215,6 +215,7 @@ router.post('/add', function (req, res, next) {
       } else {
         pd2 = ptDiff[name2][0];
         avgpd2 = avgPtDiff[name2];
+        console.log(ptDiff);
       }
       var ws1;
       if (consecWins[name1].length === 0) {
